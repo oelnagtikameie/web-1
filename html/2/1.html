@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>CSS 优先级最小示例（可直接用 VS Code 打开）</title>
+<style>
+  /* 元素选择器（最低） */
+  p { color: green; }
+
+  /* class 覆盖元素 */
+  .cls { color: blue; }
+
+  /* 相同 specificity（p.cls 与 p.cls），后写者覆盖先写者 */
+  p.cls { color: orange; }  /* 先写：将被覆盖 */
+  p.cls { color: salmon; }  /* 后写：最终生效 */
+
+  /* 多个 class 叠加，specificity 更高 */
+  .note.warning { color: purple; }
+
+  /* id 覆盖 class 与元素 */
+  #uid { color: red; }
+
+  /* 同一选择器重复定义，后写覆盖 */
+  .late { color: brown; }
+  .late { color: teal; }     /* 最终生效 */
+
+  /* 父级限定带来更高 specificity（背景色示例） */
+  .btn { background: silver; color:#000; padding:6px 10px; border:0; }
+  .box .btn { background: gold; } /* 在 .box 内的 .btn 背景为金色 */
+
+  /* !important 覆盖非 important 的行内样式 */
+  .force { color: black !important; }
+
+  /* 页面排版（无关优先级，仅便于观看） */
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft Yahei", sans-serif; line-height:1.6; padding:24px; }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .title { text-align: center; font-size: 28px; margin: 8px 0 16px; }
+  .sub { text-align: center; color:#666; margin-bottom: 24px; }
+  .case { border:1px solid #ddd; border-radius:8px; padding:12px 14px; margin:10px auto; }
+  .label { color:#555; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="title"><b>CSS 优先级演示</b></p>
+  <p class="sub">将此文件保存为 index.html，直接在 VS Code 用 Live Server 或浏览器打开即可。</p>
+
+  <!-- 1. 元素选择器 -->
+  <div class="case">
+    <div class="label">1) 元素选择器 p（应为 green）</div>
+    <p>我来自 p 规则（green）</p>
+  </div>
+
+  <!-- 2. class 覆盖元素 -->
+  <div class="case">
+    <div class="label">2) class 覆盖元素（应为 blue）</div>
+    <p class="cls">我被 .cls 覆盖（blue）</p>
+  </div>
+
+  <!-- 3. 同 specificity，后写覆盖 -->
+  <div class="case">
+    <div class="label">3) 同 specificity（p.cls），后写覆盖（应为 salmon）</div>
+    <p class="cls">我是 p.cls，后写的 p.cls 将我设为 salmon</p>
+  </div>
+
+  <!-- 4. 多个 class specificity 更高 -->
+  <div class="case">
+    <div class="label">4) 多个 class 更具体（应为 purple）</div>
+    <p class="note warning">.note.warning specificity 更高（purple）</p>
+  </div>
+
+  <!-- 5. id 覆盖 class -->
+  <div class="case">
+    <div class="label">5) #id 覆盖 .class（应为 red）</div>
+    <p id="uid" class="cls">同时有 #uid 与 .cls，最终 red</p>
+  </div>
+
+  <!-- 6. 行内样式最高（无 important 时） -->
+  <div class="case">
+    <div class="label">6) 行内样式覆盖普通规则（应为 deeppink）</div>
+    <p class="cls" style="color: deeppink;">行内 style 比 .cls 更高（deeppink）</p>
+  </div>
+
+  <!-- 7. !important 覆盖非 important 的行内样式 -->
+  <div class="case">
+    <div class="label">7) .force 的 !important 覆盖行内（应为 black）</div>
+    <p class="force" style="color: deeppink;">尽管有行内 deeppink，但被 .force !important 覆盖为 black</p>
+  </div>
+
+  <!-- 8. 同一选择器重复定义，后写覆盖 -->
+  <div class="case">
+    <div class="label">8) 同一选择器重复定义，后写覆盖（应为 teal）</div>
+    <p class="late">.late 定义两次，后写 teal 覆盖先写 brown（teal）</p>
+  </div>
+
+  <!-- 9. 父级限定 specificity（背景色示例） -->
+  <div class="case">
+    <div class="label">9) 父级限定使 .box .btn 背景 gold；单独 .btn 为 silver</div>
+    <div class="box" style="margin-bottom:8px;">
+      <button class="btn">在 .box 里（gold）</button>
+    </div>
+    <button class="btn">不在 .box 里（silver）</button>
+  </div>
+</div>
+</body>
+</html>
+
