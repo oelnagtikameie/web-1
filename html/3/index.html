@@ -1,36 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<title>第三周课表</title>
+  <meta charset="UTF-8">
+  <title>第三周课表</title>
 </head>
-<body>
-	<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
-		<tr>
-			<td colspan="2" align="center" height="150">
-				<p><font size="7" face="黑体"><b>第三周课表</b></font></p>
-				<p><font size="4" face="隶书">2026—2027 学年第 1 学期</font></p>
-				<p><font size="3" face="隶书" color="blue">2026.09.14-2026.09.20</font></p>
-			</td>
-		</tr>
-		<tr>
-			<td width="15%" valign="top">
-				<br>
-				<table width="100%" border="0" cellspacing="0" cellpadding="8">
-					<tr><td align="center"><font size="4"><a href="../2/overall.html" target="content">全周</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Monday.html" target="content">星期一</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Tuesday.html" target="content">星期二</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Wednesday.html" target="content">星期三</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Thursday.html" target="content">星期四</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Friday.html" target="content">星期五</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Saturday.html" target="content">星期六</a></font></td></tr>
-					<tr><td align="center"><font size="4"><a href="../2/Sunday.html" target="content">星期日</a></font></td></tr>
-				</table>
-			</td>
-			<td width="90%" valign="top">
-				<iframe src="../2/overall.html" name="content" width="100%" height="410" frameborder="0" title="课表内容"></iframe>
-			</td>
-		</tr>
-	</table>
-</body>
+<frameset rows="180,*" border="0">
+  <frame src="title.html" name="title" scrolling="no">
+  <frameset cols="15%,85%" border="0">
+    <frame src="nav.html" name="navigation">
+    <frame src="overall.html" name="content">
+  </frameset>
+</frameset>
 </html>
