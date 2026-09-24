@@ -4,11 +4,21 @@
   <meta charset="UTF-8">
   <title>第三周课表</title>
 </head>
-<frameset rows="180,*" border="0">
-  <frame src="title.html" name="title" scrolling="no">
-  <frameset cols="15%,85%" border="0">
-    <frame src="nav.html" name="navigation">
-    <frame src="overall.html" name="content">
-  </frameset>
-</frameset>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr height="180">
+    <td colspan="2">
+      <iframe src="title.html" name="title" width="100%" height="180" frameborder="0" scrolling="no"></iframe>
+    </td>
+  </tr>
+  <tr>
+    <td width="15%" valign="top">
+      <iframe src="nav.html" name="navigation" width="100%" height="600" frameborder="0"></iframe>
+    </td>
+    <td width="85%" valign="top">
+      <iframe src="overall.html" name="content" width="100%" height="600" frameborder="0"></iframe>
+    </td>
+  </tr>
+</table>
+</body>
 </html>
